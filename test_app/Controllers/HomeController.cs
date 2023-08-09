@@ -14,7 +14,6 @@ namespace test_app.Controllers
         {
             _logger = logger;
         }
-
         public IActionResult Index(int? page)
         {
             page=page ?? 0;
@@ -26,8 +25,7 @@ namespace test_app.Controllers
             SqlParameter[] param = new SqlParameter[]
             {
                 new SqlParameter("@page",page),
-                new SqlParameter("@record",20),
-
+                new SqlParameter("@record",20)
             };
             cmd.Parameters.AddRange(param);
             SqlDataAdapter ada=new SqlDataAdapter(cmd);
@@ -35,12 +33,10 @@ namespace test_app.Controllers
             ada.Fill(dt);
             return View(dt);
         }
-
         public IActionResult Privacy()
         {
             return View();
         }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
